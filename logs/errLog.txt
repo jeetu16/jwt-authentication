@@ -1,0 +1,24 @@
+20230418	12:50:23	2d67ebe9-47fc-4de1-809a-7ef7c5cc9e4e	Error: Not allowed by CORS
+20230418	12:50:23	f6b6bcd0-4c36-4b28-9260-6faedc473343	Error: Not allowed by CORS
+20230418	12:50:50	efc39fe8-829e-45d5-aa2c-6765cacccf8a	Error: Not allowed by CORS
+20230418	12:50:50	5dbc553f-5d2e-4a19-b08e-39644f6b5a9a	Error: Not allowed by CORS
+20230418	15:37:16	9b06e3a2-7b98-483a-8e96-707965fdd896	SyntaxError: Unexpected token ' in JSON at position 4
+20230418	15:37:28	fa777976-f4e2-4b43-9f2f-3c17f92eaf35	SyntaxError: Unexpected token ' in JSON at position 4
+20230418	16:20:42	575a3cdc-1dea-4d42-a6c4-8b65ce4415fd	Error: Not allowed by CORS
+20230418	16:20:59	1e00b239-9c76-47b0-a8df-b984ac003d25	Error: Not allowed by CORS
+20230418	16:23:52	3ce182f3-56e0-40f7-b603-352e02bc80ca	Error: Not allowed by CORS
+20230418	16:25:06	e211fc64-e7b1-46c2-bd93-8ff7776e52d6	Error: Not allowed by CORS
+20230418	16:25:27	ece81098-e3a2-4087-be4c-f8a0d5fcc42b	Error: Not allowed by CORS
+20230418	16:25:46	9429c74f-24c2-47e9-90e0-56d9979911c4	Error: Not allowed by CORS
+20230418	16:26:13	697093a6-4332-4864-ace3-48c91866afbe	Error: Not allowed by CORS
+20230418	16:27:28	406f8a96-8b1d-44e4-9674-ae38971b7a0e	Error: Not allowed by CORS
+20230418	16:28:20	369fb16c-44d2-4c2b-ab9b-c7684c52f2f9	Error: Not allowed by CORS
+20230418	16:28:27	63647864-6cfc-4cec-ba72-17c7c3243828	Error: Not allowed by CORS
+20230418	16:28:31	6b4da85b-10dc-49a0-8ecf-9b6ff132365e	Error: Not allowed by CORS
+20230418	16:28:38	f7925a7d-10f7-47e4-9f7f-a98be8716d67	Error: Not allowed by CORS
+20230418	16:29:24	f377fdd4-0cf5-4dee-bd11-8cb4025bb531	Error: Not allowed by CORS
+20230418	16:30:38	3a9f07e7-d6f8-4604-86a1-38b702f450ed	Error: Not allowed by CORS
+20230418	16:31:15	8e9ec729-d944-4920-9d56-52899687d6c9	SyntaxError: Unexpected token ' in JSON at position 16
+20230419	10:45:40	3670af2f-b39c-46d6-9651-0a8c8f8d86a6	Error: Cannot set headers after they are sent to the client
+20230421	17:41:57	176fa88c-7203-403d-a2dc-02bccdba747c	SyntaxError: Unexpected token } in JSON at position 26
+20230504	17:22:03	23a3047c-af76-480f-b7da-250e264a0bc5	TypeError: Cannot read properties of undefined (reading 'SECRET')
