@@ -1,12 +1,19 @@
+require('dotenv').config();
 const errorHandler = require('./middleware/errorHandler');
 const path = require('path');
 const { logger } = require('./middleware/logEvents');
 const cors = require('cors');
 const express = require('express');
 const app = express();
-const router = require('./routes/subdir');
 const originOpts = require('./config/corsOptions');
 const jwtVerify = require('./middleware/jwtVerity');
+const cookieParser = require('cookie-parser');
+const mongoose = require('mongoose');
+const connectDB = require('./config/connectDB');
+
+// connect to MongoDB
+
+connectDB();
 
 const PORT = process.env.PORT || 3400;
 
@@ -24,6 +31,9 @@ app.use(express.urlencoded({ extended:false }));
 // built-in middleware for josn
 app.use(express.json());
 
+// middleware for cookie
+app.use(cookieParser());
+
 // server static files
 app.use(express.static(path.join(__dirname,'/public')));
 app.use('/subdir',express.static(path.join(__dirname,'/public')));
@@ -31,11 +41,13 @@ app.use('/subdir',express.static(path.join(__dirname,'/public')));
 
 // routes
 app.use('/', require('./routes/root'));
-app.use('/subdir',require('./routes/subdir'));
-app.use('/employees',jwtVerify,require('./routes/api/employees'));
-app.use('/auth',require('./routes/auth'));
 app.use('/register',require('./routes/register'));
+app.use('/auth',require('./routes/auth'));
+app.use('/refresh',require('./routes/refresh'))
+app.use('/logout',require('./routes/logout'));
 app.use('/deleteuser',require('./routes/deleteUser'));
+app.use(jwtVerify)
+app.use('/employees',require('./routes/api/employees'));
 
 
 // chaining route handlers
@@ -45,4 +57,7 @@ app.all('*', (req, res) => {
 
 app.use(errorHandler)
 
-app.listen(PORT, () => console.log(`Successfully Running On ${PORT}`));
+mongoose.connection.once('open', () => {
+    console.log("Connected to MongoDB");
+    app.listen(PORT, () => console.log(`Successfully Running On ${PORT}`));
+})
