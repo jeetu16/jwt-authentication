@@ -4,10 +4,9 @@ const verifyRoles = (...allRoles) => {
         const rolesArray = [...allRoles];
         console.log(rolesArray);
         console.log(req.roles);
+        const result = req.roles.map((role) => rolesArray.includes(Number(role))).find(user => user===true)
 
-        const result = req.roles.map((role) => rolesArray.includes(role)).find(user => user===true)
-
-        if(!result) return res.sendStatus(403);
+        if(!result) return res.sendStatus(401);
 
         next();
     }

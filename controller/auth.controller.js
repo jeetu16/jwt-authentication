@@ -4,7 +4,7 @@ const User = require('../model/User');
 
 
 
-const authHandler = async (req, res) => {
+const loginUser = async (req, res) => {
     const { user, pwd } = req.body;
 
     // checks non empty value
@@ -12,12 +12,9 @@ const authHandler = async (req, res) => {
 
     // check user is exist or not
     const foundUser = await User.findOne({username:user})
-    console.log(foundUser);
-
     if (!foundUser) {
         return res.sendStatus(401); // unauthorized
     }
-
 
     // checking user password is correct or incorrect
     const match = await bcrypt.compare(pwd, foundUser.password);
@@ -33,7 +30,7 @@ const authHandler = async (req, res) => {
                 }
             },
             process.env.ACCESS_TOKEN_SECRET,
-            { expiresIn: '60s' }
+            { expiresIn: '5m' }
         );
         const refreshToken = jwt.sign(
             { "username": foundUser.username },
@@ -41,10 +38,12 @@ const authHandler = async (req, res) => {
             { expiresIn: '1d' }
         )
 
-        // Saving refreshToken with current user
-        await User.updateOne({_id:foundUser._id},{refreshToken:refreshToken});
+        // Saving refreshToken with current user in DB
+        foundUser.refreshToken = refreshToken;
+        const result = await foundUser.save();
+        // await User.updateOne({_id:foundUser._id},{refreshToken:refreshToken});
 
-        res.cookie('jwt', refreshToken, { httpOnly: true, maxAge: 24 * 60 * 60 * 1000 })
+        res.cookie('jwt', refreshToken, { httpOnly: true, secure:true, sameSite: 'None', maxAge: 24 * 60 * 60 * 1000 })
         res.status(201).json({ accessToken })
 
     } else {
@@ -53,4 +52,30 @@ const authHandler = async (req, res) => {
 
 }
 
-module.exports = authHandler;
+
+const logoutUser = async (req, res) => {
+    const cookies = req.cookies;
+
+    if (!cookies?.jwt) return res.sendStatus(204); // no content
+    const refreshToken = cookies.jwt
+
+    // is refreshToken in DB?
+    const foundUser = await User.findOne({refreshToken:refreshToken}).exec();
+
+    if (!foundUser) {
+        res.clearCookie('jwt', { httpOnly: true, maxAge: 24 * 60 * 60 * 1000 });
+        return res.sendStatus(204)
+    }
+    // Delete refreshToken in db
+    foundUser.refreshToken = "";
+    const result = await foundUser.save();
+    console.log(result);
+
+    res.clearCookie('jwt', { httpOnly: true, maxAge: 24 * 60 * 60 * 1000 })
+    res.sendStatus(204);
+}
+
+module.exports = {
+    loginUser,
+    logoutUser
+};
