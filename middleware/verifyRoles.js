@@ -1,12 +1,10 @@
 const verifyRoles = (...allRoles) => {
     return (req,res,next) => {
-        if(!req?.roles) return res.sendStatus(401);
         const rolesArray = [...allRoles];
-        console.log(rolesArray);
-        console.log(req.roles);
+        if(!req?.roles) return res.status(401).json({"message":"Bad request"});
         const result = req.roles.map((role) => rolesArray.includes(Number(role))).find(user => user===true)
 
-        if(!result) return res.sendStatus(401);
+        if(!result) return res.status(403).json({"message":"You don't have permission to do this"});
 
         next();
     }

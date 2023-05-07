@@ -43,7 +43,7 @@ const loginUser = async (req, res) => {
         const result = await foundUser.save();
         // await User.updateOne({_id:foundUser._id},{refreshToken:refreshToken});
 
-        res.cookie('jwt', refreshToken, { httpOnly: true, secure:true, sameSite: 'None', maxAge: 24 * 60 * 60 * 1000 })
+        res.cookie('jwt', refreshToken, { httpOnly: true, maxAge: 24 * 60 * 60 * 1000 })
         res.status(201).json({ accessToken })
 
     } else {
@@ -56,7 +56,7 @@ const loginUser = async (req, res) => {
 const logoutUser = async (req, res) => {
     const cookies = req.cookies;
 
-    if (!cookies?.jwt) return res.sendStatus(204); // no content
+    if (!cookies?.jwt) return res.status(400).json({"message":"Bad request"}); // no content
     const refreshToken = cookies.jwt
 
     // is refreshToken in DB?
@@ -72,7 +72,7 @@ const logoutUser = async (req, res) => {
     console.log(result);
 
     res.clearCookie('jwt', { httpOnly: true, maxAge: 24 * 60 * 60 * 1000 })
-    res.sendStatus(204);
+    res.status(200).json({ "message": `${result.username} successfully logout `});
 }
 
 module.exports = {

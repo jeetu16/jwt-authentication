@@ -22,3 +22,4 @@
 20230419	10:45:40	3670af2f-b39c-46d6-9651-0a8c8f8d86a6	Error: Cannot set headers after they are sent to the client
 20230421	17:41:57	176fa88c-7203-403d-a2dc-02bccdba747c	SyntaxError: Unexpected token } in JSON at position 26
 20230504	17:22:03	23a3047c-af76-480f-b7da-250e264a0bc5	TypeError: Cannot read properties of undefined (reading 'SECRET')
+20230507	00:14:42	f957fd33-87b3-45fd-86ec-3e68e28ce9cf	ReferenceError: Cannot access 'rolesArray' before initialization

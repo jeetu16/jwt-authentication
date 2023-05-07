@@ -5,7 +5,7 @@ const bcrypt = require('bcrypt');
 const registerUser = async (req, res) => {
     const { username, password } = req.body;
     if (!username || !password) {
-        res.status(400).json({ 'message': `User name and password are required` });
+        return res.status(400).json({ 'message': `User name and password are required` });
     }
     
     // check for duplicate user in the db
