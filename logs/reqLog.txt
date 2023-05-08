@@ -280,3 +280,8 @@
 20230507	13:05:50	ba00069e-9789-463b-ba71-fff9cf5ae523	DELETE	undefined	/employees
 20230507	13:06:05	e241a5f4-0851-4053-8fb7-d7f2c179d46a	POST	undefined	/user/loginUser
 20230507	13:06:22	edcf697c-0dbf-4b78-a557-9745e577f9e0	DELETE	undefined	/employees
+20230508	15:53:31	adbc6b19-d4be-45c4-8852-b347974e7d04	POST	undefined	/user/loginUser
+20230508	15:54:15	9293b310-7344-4405-a079-b33ff4f3c375	GET	undefined	/employees
+20230508	19:05:53	18f478e8-7d77-4375-aeb2-3972ed189981	OPTIONS	http://localhost:5173	/user/registerUser
+20230508	19:06:41	fc7980ff-f31b-4d5e-babe-40d54850a7e4	OPTIONS	http://localhost:5173	/user/registerUser
+20230508	19:06:41	df77f853-5501-466d-bc49-762dae04cac2	POST	http://localhost:5173	/user/registerUser

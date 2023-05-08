@@ -4,10 +4,10 @@ const getAllEmployee = async (req, res) => {
     const employees = await Employee.find();
     res.json(employees);
 }
-     
+
 const addEmployee = async (req, res) => {
 
-    if (!req?.body?.firstname || !req?.body?.lastname) {
+    if(!req?.body?.firstname || !req?.body?.lastname) {
         return res.status(400).json({ message: `First and Last Name are required` });
     }
     try {
