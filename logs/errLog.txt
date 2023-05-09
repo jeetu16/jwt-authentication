@@ -23,3 +23,6 @@
 20230421	17:41:57	176fa88c-7203-403d-a2dc-02bccdba747c	SyntaxError: Unexpected token } in JSON at position 26
 20230504	17:22:03	23a3047c-af76-480f-b7da-250e264a0bc5	TypeError: Cannot read properties of undefined (reading 'SECRET')
 20230507	00:14:42	f957fd33-87b3-45fd-86ec-3e68e28ce9cf	ReferenceError: Cannot access 'rolesArray' before initialization
+20230509	17:04:01	3218df1c-547e-4dd8-86c2-0198d1a5cffc	TypeError: res.headers is not a function
+20230509	17:06:09	92305d92-cba9-49c3-baf9-431d1b7d69f9	TypeError: res.headers is not a function
+20230509	17:07:06	ba0c6f18-4ac5-4c5a-8b07-9baca812fd01	TypeError: res.headers is not a function

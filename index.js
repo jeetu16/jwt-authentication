@@ -10,6 +10,7 @@ const jwtVerify = require('./middleware/jwtVerity');
 const cookieParser = require('cookie-parser');
 const mongoose = require('mongoose');
 const connectDB = require('./config/connectDB');
+const credentials = require('./middleware/credentials');
 
 // connect to MongoDB
 
@@ -19,6 +20,9 @@ const PORT = process.env.PORT || 3400;
 
 // custom middleware
 app.use(logger);
+
+//
+app.use(credentials);
 
 // Cross Origin Resource Sharing
 app.use(cors(originOpts));
